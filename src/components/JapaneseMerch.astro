@@ -1,0 +1,46 @@
+---
+const images = [
+  "/assets/Japanese/japanese-products00.webp",
+  "/assets/Japanese/japanese-products01.webp",
+  "/assets/Japanese/japanese-products02.webp",
+  "/assets/Japanese/japanese-products03.webp",
+  "/assets/Japanese/japanese-products04.webp",
+  "/assets/Japanese/japanese-products05.webp",
+  "/assets/Japanese/japanese-products06.webp",
+  "/assets/Japanese/japanese-products07.webp",
+  "/assets/Japanese/japanese-products08.webp",
+  "/assets/Japanese/japanese-products09.webp",
+  "/assets/Japanese/japanese-products10.webp",
+  "/assets/Japanese/japanese-products11.webp",
+  "/assets/Japanese/japanese-products12.webp",
+  "/assets/Japanese/japanese-products13.webp",
+  "/assets/Japanese/japanese-products14.webp",
+  "/assets/Japanese/japanese-products15.webp",
+  "/assets/Japanese/japanese-products16.webp",
+  "/assets/Japanese/japanese-products17.webp",
+  "/assets/Japanese/japanese-products18.webp",
+  "/assets/Japanese/japanese-products19.webp"
+];
+---
+
+<section class="px-4 py-10 text-center font-raleway" id="anime">
+  <h2 class="text-[30px] font-semibold text-gray-800 mb-1">
+    Japanese Anime/BT21/Daiso Merchandise
+  </h2>
+  <p class="text-gray-600 text-[16px] mb-8">
+    Check out our newest Japanese Anime BT21 Goods lineup!
+  </p>
+
+  <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+    {images.map((src, index) => (
+      <div class="overflow-hidden rounded shadow" >
+        <img
+          src={src}
+          alt={`japanese product ${index + 1}`}
+          class="object-cover w-full h-70 max-lg:h-auto hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+        />
+      </div>
+    ))}
+  </div>
+</section>
