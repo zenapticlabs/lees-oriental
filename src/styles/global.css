@@ -1,37 +1,85 @@
 @import "tailwindcss";
 
+.navbar-toggle {
+  background: transparent;
+  width: 22px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transition: width 0.13s ease-out, transform 0.13s ease-out;
+}
+.navbar-toggle .icon-bar:nth-child(2) {
+  width: 80%;
+}
+.navbar-toggle:hover .icon-bar {
+  width: 80%;
+}
+.navbar-toggle:hover .icon-bar:nth-child(2) {
+  width: 100%;
+}
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+.playfair {
+  font-family: "Playfair Display SC", serif;
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+.slider .appliances {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 1;
+}
 
- .navbar-toggle{
-    background: transparent;
-    width: 22px;
-    height: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 5px;
-    cursor:pointer;
-  }
-  .navbar-toggle .icon-bar{
-        display: block;
-    width: 100%;
-    height: 2px;
-    background: #fff;
-     transition: width .13s ease-out,transform .13s ease-out;
-       
-  }
-  .navbar-toggle .icon-bar:nth-child(2){
-    width: 80%;
-  }
-  .navbar-toggle:hover .icon-bar{
-    width: 80%;
-  
-   }
-  .navbar-toggle:hover  .icon-bar:nth-child(2){
-    width: 100%;
-   }
-   .font-montserrat{font-family: 'Montserrat', sans-serif;}
-   .playfair{
-    font-family: 'Playfair Display SC', serif;
-   }
-   
+.slider img.active {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.slider img.prev {
+  transform: translateX(-100%);
+  z-index: 1;
+}
+.slider .groceries {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1) 1s;
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 1;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+.font-raleway {
+  font-family: "Raleway", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.font-onest{
+  font-family: 'Onest', sans-serif;
+}
