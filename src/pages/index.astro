@@ -5,6 +5,9 @@ import Products from "../components/Products.astro";
 import StoreTiming from "../components/StoreTiming.astro";
 import Location from "../components/Location.astro";
 import JapaneseMerch from "../components/JapaneseMerch.astro";
+import NewItems from "../components/NewItems.astro";
+import  StoreGallery  from "../components/StoreGallery.tsx";
+import ContactUs from "../components/ContactUs";
 ---
 
 <Layout>
@@ -12,5 +15,8 @@ import JapaneseMerch from "../components/JapaneseMerch.astro";
   <Products />
   <StoreTiming />
   <Location />
-  <JapaneseMerch /> 
+  <JapaneseMerch />
+  <NewItems />
+  <StoreGallery client:load/>
+  <ContactUs client:load />
 </Layout>

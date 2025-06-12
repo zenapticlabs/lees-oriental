@@ -1,16 +1,16 @@
 ---
 const storeHours = [
-  { day: "Monday", time: "11AM – 6PM" },
-  { day: "Tuesday", time: "11AM – 6PM" },
-  { day: "Wednesday", time: "11AM – 6PM" },
-  { day: "Thursday", time: "11AM – 6PM" },
-  { day: "Friday", time: "11AM – 6PM" },
-  { day: "Saturday", time: "11AM – 6PM" },
-  { day: "Sunday", time: "11AM – 4PM" },
+  { day: "Monday", time: "11AM - 6PM" },
+  { day: "Tuesday", time: "11AM - 6PM" },
+  { day: "Wednesday", time: "11AM - 6PM" },
+  { day: "Thursday", time: "11AM - 6PM" },
+  { day: "Friday", time: "11AM - 6PM" },
+  { day: "Saturday", time: "11AM - 6PM" },
+  { day: "Sunday", time: "11AM - 4PM" },
 ];
 ---
 <div class="w-full bg-gray-50 flex justify-center items-center font-raleway" id="onntime">
-<div class="flex w-full max-lg:flex-col-reverse items-center justify-center max-w-7xl  px-6 py-14 ">
+<div class="flex w-full max-lg:flex-col items-center max-lg:px-6 justify-center max-w-7xl  px-6 py-14 ">
   <div class="relative w-[50%]  max-lg:w-[90%] aspect-[3/2] m-[50px] max-lg:m-0 overflow-hidden rounded-lg group">
     <img
       src='https://i0.wp.com/bpt.dlq.mybluehost.me/leesoriental/wp-content/uploads/2022/07/20220701_161650-rotated.jpg?fit=1755%2C2340&ssl=1'
@@ -24,8 +24,8 @@ const storeHours = [
     <h2 class="text-[30px] font-semibold mb-4 max-lg:mt-4">Store Hours</h2>
     <ul class="text-gray-900 text-[16px] leading-relaxed space-y-2">
       {storeHours.map(({ day, time }) => (
-        <li class="flex justify-between  w-full">
-          <span class="font-bold">{day}</span>
+        <li class="flex justify-start gap-[100px]  w-full">
+          <span class="font-bold  self-start">{day}</span>
           <span>{time}</span>
         </li>
       ))}

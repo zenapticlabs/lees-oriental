@@ -1,0 +1,47 @@
+---
+const items = [
+  {
+    src: "/assets/NewItems/new-item01.webp",
+    alt: "BT21 Temparature Control Water Bottle",
+  },
+  {
+    src: "/assets/NewItems/new-item03.webp",
+    alt: "Assorted Flavor Konjac Jelly",
+  },
+  {
+    src: "/assets/NewItems/new-item02.webp",
+    alt: "Korean Facial Masks",
+  },
+  {
+    src: "/assets/NewItems/new-item04.webp",
+    alt: "Kawaii Kat Cups with lid",
+  },
+];
+---
+
+<section class="text-center mt-8 font-raleway" id="newitems">
+  <h1 class="text-3xl font-bold mb-2">New Items</h1>
+  <p class="mb-4 text-gray-700">
+    Check out these new additions at Lee’s Oriental! Updated bi-weekly, so don’t
+    miss out on great new products!
+  </p>
+  <span class="text-gray-700 underline mb-8 inline-block">
+    Last Updated : 10/9/2022
+  </span>
+  <div class="flex justify-center gap-6 flex-wrap mb-8 mt-8">
+    {
+      items.map((item) => (
+        <div class="relative   h-fit group">
+          <img
+            src={item.src}
+            alt={item.alt}
+            class="w-72 h-fit object-cover rounded-lg shadow-md max-lg:aspect-[3/4] transition-opacity duration-700 group-hover:opacity-0"
+          />
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-200 bg-opacity-80 rounded-lg">
+            <span class="text-xl font-semibold text-gray-400">{item.alt}</span>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
