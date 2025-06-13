@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-
+import { toast, Bounce } from "react-toastify";
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     category: "General Suggestions",
-    firstName: "",
+    name: "",
     email: "",
     message: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required.";
+    if (!formData.name.trim()) {
+      newErrors.name = "First name is required.";
     }
 
     if (!formData.email.trim()) {
@@ -39,36 +38,87 @@ const ContactUs = () => {
       [e.target.name]: e.target.value,
     }));
     setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
-    setSuccess(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validate()) {
+      setLoading(true);
+      const res = await fetch("/api/route", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await res.json();
+      setLoading(false);
+      if (result.ok) {
+        toast.success(`${result.message}`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
 
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
         setFormData({
           category: "General Suggestions",
-          firstName: "",
+          name: "",
           email: "",
           message: "",
         });
-      }, 3000);
+      } else {
+        toast.error(`${result.message}`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }
     } else {
-      setSuccess(false);
+      toast.error(`Please enter valid email and data`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center  p-6 font-onest" id="contactus">
-      <h2 className="text-2xl  my-[24px] font-bold self-center w-[65%] text-start max-lg:w-full">Contact Us</h2>
-      <p className="my-[15px] text-[16px] text-gray-600 self-center text-start  w-[65%] max-lg:w-full " >We want to hear from you!</p>
+    <div
+      className="w-full flex flex-col justify-center items-center  p-6 font-onest"
+      id="contactus"
+    >
+      <h2 className="text-2xl  my-[24px] font-bold self-center w-[65%] text-start max-lg:w-full">
+        Contact Us
+      </h2>
+      <p className="my-[15px] text-[16px] text-gray-600 self-center text-start  w-[65%] max-lg:w-full ">
+        We want to hear from you!
+      </p>
 
-      <form onSubmit={handleSubmit} noValidate className=" w-[65%] max-lg:w-full relative">
-        <div className="mb-[30px] ">
+      <form
+        onSubmit={handleSubmit}
+        noValidate
+        className=" w-[65%] max-lg:w-full relative"
+      >
+        <div className="mb-[30px] cursor-pointer ">
           <label className="block font-medium mb-[8px]" htmlFor="category">
             Category *
           </label>
@@ -86,20 +136,20 @@ const ContactUs = () => {
         </div>
 
         <div className="mb-[30px]">
-          <label className="block font-medium mb-[8px]" htmlFor="firstName">
+          <label className="block font-medium mb-[8px]" htmlFor="name">
             First Name *
           </label>
           <input
-            name="firstName"
-            id="firstName"
+            name="name"
+            id="name"
             type="text"
-            value={formData.firstName}
+            value={formData.name}
             autoComplete="given-name"
             onChange={handleChange}
             className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
           />
-          {errors.firstName && (
-            <p className="text-red-500 text-sm absolute">{errors.firstName}</p>
+          {errors.name && (
+            <p className="text-red-500 text-sm absolute">{errors.name}</p>
           )}
         </div>
 
@@ -139,20 +189,26 @@ const ContactUs = () => {
           )}
         </div>
 
-        <button
-          type="submit"
-          className="py-[12px] px-[25px]  border border-gray-400 rounded hover:bg-gray-100 font-semibold"
-        >
-          SEND MESSAGE
-        </button>
-   <div className="relative w-full h-[40px]">
-{success && (
-          <p className="absolute text-green-600 top-4 font-medium">
-            Thank you! Your message has been sent successfully.
-          </p>
+        {loading ? (
+          <button
+            type="submit"
+            className="py-[12px] px-[25px]  border border-gray-400 rounded hover:bg-gray-100 font-semibold"
+          >
+            Loading{" "}
+            <img
+              src="/assets/loader.gif"
+              alt="Loading..."
+              className="w-[24px] ml-2 inline-block object-cover"
+            />
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="py-[12px] px-[25px]  border border-gray-400 rounded hover:bg-gray-100 font-semibold cursor-pointer"
+          >
+            SEND MESSAGE
+          </button>
         )}
-        </div>
-        
       </form>
     </div>
   );
