@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 ---
 
 <!doctype html>
@@ -32,11 +33,25 @@ import "../styles/global.css";
       rel="stylesheet"
     />
 
-    <title>Business Portfolio</title>
+  <title>Lee's Oriental</title>
   </head>
   <body>
     <slot />
     <Footer />
+     <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+        client:only
+      />
   </body>
 </html>
 

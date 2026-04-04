@@ -1,5 +1,4 @@
 {
-  "name": "lees-oriental",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,11 +11,15 @@
     "@astrojs/react": "^4.2.0",
     "@tailwindcss/vite": "^4.0.7",
     "@types/react": "^19.0.8",
+    "@astrojs/node": "^9.2.1",
     "@types/react-dom": "^19.0.3",
+     "mailersend": "^2.5.0",
+    "react-toastify": "^11.0.5",
     "astro": "^5.2.4",
+    "motion": "^12.7.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "yet-another-react-lightbox": "^3.23.2",
-    "tailwindcss": "^4.0.7"
+    "tailwindcss": "^4.0.7",
+    "yet-another-react-lightbox": "^3.23.2"
   }
 }

@@ -24,7 +24,7 @@ const storeHours = [
     <h2 class="text-[30px] font-semibold mb-4 max-lg:mt-4">Store Hours</h2>
     <ul class="text-gray-900 text-[16px] leading-relaxed space-y-2">
       {storeHours.map(({ day, time }) => (
-        <li class="flex justify-start gap-[100px]  w-full">
+        <li class="flex justify-between max-sm:w-full w-[60%]">
           <span class="font-bold  self-start">{day}</span>
           <span>{time}</span>
         </li>
